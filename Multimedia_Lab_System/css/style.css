@@ -1,0 +1,552 @@
+/* 苹果官网核心风格 + INS 潮流设计融合：极简、留白、扁平化 + 斜纹背景、渐变、INS风阴影 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 全局INS风格斜纹背景（低透明度不干扰内容） */
+body {
+    background-color: #f9f9f9;
+    background-image:
+        linear-gradient(45deg, rgba(0, 113, 227, 0.02) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(0, 113, 227, 0.02) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0, 113, 227, 0.02) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(0, 113, 227, 0.02) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    color: #1d1d1f; /* 苹果默认文字色 */
+    line-height: 1.6;
+    font-size: 16px;
+}
+:root {
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.35);
+            --glass-highlight: rgba(255, 255, 255, 0.5);
+        }
+.airglass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.airglass:before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 70px;
+     background: linear-gradient(
+          to bottom,
+          var(--glass-highlight),
+          rgba(255, 255, 255, 0)
+     );
+     opacity: 0.55;
+     pointer-events: none;
+}
+
+/* 页面容器：居中+留白，模拟苹果官网窄屏聚焦 */
+.container {
+    width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1; /* 确保内容在背景之上 */
+}
+
+/* 导航栏（参考苹果顶部导航 + INS毛玻璃增强） */
+.nav-bar {
+    padding: 12px 0;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+/* 必须加透明背景才会让 backdrop-filter 生效 */
+    background: rgba(255,255,255,0);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+
+.nav-content {
+    display: flex;
+    justify-content: space-between; /* 左右顶格 */
+    align-items: center;
+    margin: 0;
+    height: 48px;
+    width: 100%; /* 关键：让两侧可顶到边 */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d1d1f;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding-left: 30px; /* ← 左侧空两格（可调） */
+}
+
+
+/* 苹果风格logo图片样式 + INS圆角 */
+.logo-img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+    /* 核心：和导航栏背景完全一致，强制透明兜底 */
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    overflow: hidden; /* 防止圆角透出其他色 */
+    /* 抵消抗锯齿白边（可选） */
+    filter: drop-shadow(0 0 0.5px rgba(0,0,0,0.01));
+}
+
+.logo:hover .logo-img {
+    opacity: 1; /* hover时图片变实，与文字hover效果统一 */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding-right: 8px; /* 可选：右边留两格 */
+}
+
+
+.nav-links li {
+    margin: 0 18px;
+}
+
+.nav-links a {
+    color: #1d1d1f;
+    text-decoration: none;
+    font-size: 18px;
+    opacity: 0.8;
+    transition: all 0.2s ease; /* 新增all过渡，支持多属性变化 */
+    position: relative;
+}
+
+/* INS风格导航链接hover下划线 */
+.nav-links a:hover {
+    opacity: 1;
+}
+.nav-links a:after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0071e3, #00c6ff); /* INS渐变 */
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+.nav-links a:hover:after {
+    width: 100%;
+}
+
+/* 页头（参考苹果产品标题区 + INS渐变文字） */
+.header {
+    text-align: center;
+    padding: 60px 0 40px;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+
+    /* 更柔和丝滑的艺术渐变 */
+    background: linear-gradient(
+        100deg,
+        #000000 10%,
+        #0066ff 35%,
+        #00c6ff 60%,
+        #75e3ff 90%
+    );
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+}
+
+.header p {
+    font-size: 21px;
+    color: #6e6e73; /* 苹果次要文字色 */
+    max-width: 700px;
+    margin: 0 auto;
+    /* INS轻微文字阴影 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+/* 内容区域：留白+卡片式设计 */
+.content {
+    padding: 20px 0 80px;
+}
+
+/* 卡片组件（苹果风格 + INS增强阴影+渐变边框） */
+.card {
+    background-color: #fff;
+    border-radius: 16px; /* 增大圆角，INS风格 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 8px 30px rgba(0, 0, 0, 0.02); /* INS轻阴影 */
+    padding: 40px;
+    margin-bottom: 40px;
+    transition: all 0.3s ease; /* 增强过渡效果 */
+    /* INS渐变边框技巧 */
+    position: relative;
+    overflow: hidden;
+}
+/* 渐变边框伪元素 */
+.card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0071e3, #00c6ff, #0071e3);
+    border-radius: 16px 16px 0 0;
+}
+/* 增强hover效果，INS风格悬浮 */
+.card:hover {
+    transform: translateY(-5px); /* 增大上浮距离 */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 12px 40px rgba(0, 0, 0, 0.05); /* 增强阴影 */
+}
+
+/* 标题样式（层级清晰 + INS细节） */
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #1d1d1f;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+    /* INS标题装饰 */
+    position: relative;
+}
+.section-title:after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, #0071e3, transparent);
+}
+
+.sub-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 32px 0 16px;
+    color: #1d1d1f;
+    /* INS小标题点缀 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sub-title:before {
+    content: "";
+    width: 4px;
+    height: 20px;
+    background: #0071e3;
+    border-radius: 2px;
+}
+
+/* 文本样式 + INS行高优化 */
+.text-content {
+    font-size: 17px;
+    color: #424245;
+    line-height: 1.85; /* 优化行高，INS更舒适 */
+    margin-bottom: 20px;
+    /* INS轻微文字质感 */
+    text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.01);
+}
+
+/* 列表样式（苹果极简列表 + INS圆点优化） */
+.custom-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.custom-list li {
+    font-size: 17px;
+    color: #424245;
+    margin-bottom: 12px;
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.8;
+}
+
+/* INS风格渐变圆点 */
+.custom-list li:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #0071e3, #00c6ff);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    box-shadow: 0 0 6px rgba(0, 113, 227, 0.2); /* INS光晕效果 */
+}
+
+/* 多媒体容器（居中+圆角 + INS外框） */
+.media-container {
+    margin: 36px 0;
+    text-align: center;
+    /* INS风格容器装饰 */
+    padding: 16px;
+    background: #f8f8fa;
+    border-radius: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.media-item {
+    margin-bottom: 40px;
+}
+
+.media-item h3 {
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #1d1d1f;
+    /* INS标题渐变 */
+    background: linear-gradient(90deg, #1d1d1f, #6e6e73);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 媒体元素样式（苹果风格 + INS增强圆角+阴影） */
+img, video, audio, embed {
+    border-radius: 12px; /* 增大圆角，INS风格 */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08), 0 8px 30px rgba(0, 0, 0, 0.04); /* INS立体阴影 */
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; /* INS悬浮缩放 */
+}
+img:hover, video:hover {
+    transform: scale(1.01); /* 轻微缩放，INS交互感 */
+}
+
+/* 代码块样式（苹果终端风格 + INS渐变边框） */
+.code-block {
+    background-color: #f5f5f7;
+    border-radius: 12px; /* INS圆角 */
+    padding: 20px;
+    font-family: "SF Mono", Menlo, Monaco, monospace;
+    font-size: 14px;
+    color: #1d1d1f;
+    overflow-x: auto;
+    margin: 16px 0 24px;
+    line-height: 1.6;
+    /* INS渐变边框 */
+    border: 1px solid #f0f0f0;
+    position: relative;
+
+}
+/* 代码块左上角装饰 */
+.code-block:before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 36px;
+    height: 12px;
+    display: flex;
+    gap: 4px;
+}
+.code-block:before span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+}
+.code-block:before span:nth-child(2) {
+    background: #ffbd2e;
+}
+.code-block:before span:nth-child(3) {
+    background: #27ca3f;
+}
+
+/* 超链接样式（苹果蓝 + INS渐变下划线） */
+.link {
+    color: #0071e3;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: #0087ff;
+}
+
+.link:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, #0071e3, #00c6ff); /* INS渐变下划线 */
+    border-radius: 1px;
+    transition: width 0.2s ease;
+}
+
+.link:hover:after {
+    width: 100%;
+}
+
+/* 按钮样式（苹果圆角按钮 + INS渐变+阴影） */
+.btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #0071e3, #0087ff); /* INS渐变背景 */
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 28px; /* 增大圆角，INS风格 */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.2s ease; /* 增强过渡 */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2); /* INS按钮阴影 */
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #0087ff, #00c6ff); /* 渐变hover */
+    color: #fff;
+    transform: translateY(-2px); /* INS悬浮上浮 */
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3); /* 增强阴影 */
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #0071e3;
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background-color: rgba(0, 113, 227, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.1);
+}
+
+/* 锚记样式 */
+.anchor {
+    display: block;
+    margin-top: -80px;
+    padding-top: 80px;
+}
+
+/* 页脚（苹果简约页脚 + INS斜纹背景） */
+.footer {
+    background-color: #f5f5f7;
+    background-image:
+        linear-gradient(135deg, rgba(0, 113, 227, 0.03) 25%, transparent 40%),
+        linear-gradient(-45deg, rgba(0, 113, 227, 0.03) 25%, transparent 40%);
+    background-size: 30px 30px;
+    padding: 40px 0;
+    color: #6e6e73;
+    font-size: 15px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.footer-content {
+    width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.footer-links a {
+    color: #6e6e73;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+/* INS页脚链接hover效果 */
+.footer-links a:hover {
+    color: #0071e3;
+}
+.footer-links a:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #0071e3;
+    transition: width 0.2s ease;
+}
+.footer-links a:hover:after {
+    width: 100%;
+}
+
+.copyright {
+    border-top: 1px solid #e6e6e6;
+    padding-top: 20px;
+    /* INS文字渐变 */
+    background: linear-gradient(90deg, #6e6e73, #999);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* 响应式适配（保持INS风格） */
+@media (max-width: 1024px) {
+    .container, .footer-content {
+        width: 100%;
+    }
+    .card {
+        padding: 30px;
+        border-radius: 12px;
+    }
+    .header h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links li {
+        margin: 0 10px;
+    }
+    .header {
+        padding: 40px 0 20px;
+    }
+    .header h1 {
+        font-size: 32px;
+    }
+    .header p {
+        font-size: 18px;
+    }
+    .card {
+        padding: 20px;
+    }
+}

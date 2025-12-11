@@ -1,4 +1,3 @@
-/* 苹果官网核心风格 + INS 潮流设计融合：极简、留白、扁平化 + 斜纹背景、渐变、INS风阴影 */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* 全局INS风格斜纹背景（低透明度不干扰内容） */
 body {
     background-color: #f9f9f9;
     background-image:
@@ -16,7 +14,7 @@ body {
         linear-gradient(-45deg, transparent 75%, rgba(0, 113, 227, 0.02) 75%);
     background-size: 20px 20px;
     background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    color: #1d1d1f; /* 苹果默认文字色 */
+    color: #1d1d1f;
     line-height: 1.6;
     font-size: 16px;
 }
@@ -55,7 +53,7 @@ body {
      pointer-events: none;
 }
 
-/* 页面容器：居中+留白，模拟苹果官网窄屏聚焦 */
+/* 页面容器 */
 .container {
     width: 980px;
     margin: 0 auto;
@@ -64,30 +62,88 @@ body {
     z-index: 1; /* 确保内容在背景之上 */
 }
 
-/* 导航栏（参考苹果顶部导航 + INS毛玻璃增强） */
+/* 导航栏 */
 .nav-bar {
-    padding: 12px 0;
+    padding: 10px 0; /*稍微减小内边距，给双线留空间 */
     margin-bottom: 20px;
     position: sticky;
     top: 0;
     z-index: 999;
-/* 必须加透明背景才会让 backdrop-filter 生效 */
-    background: rgba(255,255,255,0);
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
-    border-bottom: 1px solid var(--glass-border);
+
+    /* 1. 核心玻璃基底 */
+    background: rgba(255, 255, 255, 0.75); /* 稍微提高不透明度，增强实体感 */
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+    /* 2. 底部移除普通边框，准备加“双线”装饰 */
+    border-bottom: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* 3D 悬浮投影 */
 }
 
+/* --- 核心设计：彩色3D双线边框 --- */
+/* 第一条线：流动的渐变光轨 */
+.nav-bar:after {
+    content: "";
+    position: absolute;
+    bottom: 2px; /* 距离底部一点距离 */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    /* INS 经典极光渐变 */
+    background: linear-gradient(
+        90deg,
+        #00c6ff 0%,
+        #9fa5ff 35%,
+        #9fa5ff 60%,
+        #8e54e9 65%,
+        #00c6ff 100%
+    );
+    background-size: 300% 100%;
+    animation: gradientFlow 8s ease infinite; /* 让线条色彩流动起来 */
+    z-index: 2;
+}
+/* --- 第二条线：3D 光学晶体折射轨 --- */
+.nav-bar:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* 极细，精致感 */
 
+    /* 核心升级：不再是纯色，而是模拟玻璃边缘反光 */
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 15%,
+        rgba(0, 198, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.4) 85%,
+        transparent 100%
+    );
+
+    /* 增加微弱的向下辉光，制造悬浮距离感 */
+    box-shadow: 0 1px 3px rgba(0, 113, 227, 0.15);
+    z-index: 1;
+}
+
+/* 线条流动动画 */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- 布局容器 --- */
 .nav-content {
     display: flex;
-    justify-content: space-between; /* 左右顶格 */
+    justify-content: space-between;
     align-items: center;
     margin: 0;
-    height: 48px;
-    width: 100%; /* 关键：让两侧可顶到边 */
+    height: 52px; /* 稍微增高 */
+    width: 100%;
 }
 
+/* --- Logo 区域：3D 几何光感增强 --- */
 .logo {
     font-size: 24px;
     font-weight: 600;
@@ -96,73 +152,93 @@ body {
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
-    gap: 8px;
-
-    padding-left: 30px; /* ← 左侧空两格（可调） */
+    gap: 12px;
+    padding-left: 30px;
+    position: relative;
 }
 
-
-/* 苹果风格logo图片样式 + INS圆角 */
 .logo-img {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
-    /* 核心：和导航栏背景完全一致，强制透明兜底 */
-    background: rgba(255, 255, 255, 0.8) !important;
-    border-radius: 25px;
-    border: none;
-    outline: none;
-    overflow: hidden; /* 防止圆角透出其他色 */
-    /* 抵消抗锯齿白边（可选） */
-    filter: drop-shadow(0 0 0.5px rgba(0,0,0,0.01));
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 45px;
+    /* 3D 几何投影：彩色弥散光 */
+    box-shadow:
+        0 4px 10px rgba(0, 113, 227, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset; /* 内发光 */
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弹性动画 */
 }
 
+/* Hover 时 Logo 浮起 + 光晕增强 */
 .logo:hover .logo-img {
-    opacity: 1; /* hover时图片变实，与文字hover效果统一 */
+    transform: scale(1.05) rotate(-3deg); /* 俏皮的3D偏转 */
+    box-shadow:
+        0 8px 20px rgba(0, 113, 227, 0.25),
+        0 0 0 2px rgba(0, 198, 255, 0.2); /* 外圈光环 */
 }
 
+/* --- 导航链接：双层 3D 胶囊风格 --- */
 .nav-links {
     display: flex;
     list-style: none;
-    padding-right: 8px; /* 可选：右边留两格 */
+    padding-right: 10px;
+    align-items: center; /* 垂直居中 */
 }
 
-
 .nav-links li {
-    margin: 0 18px;
+    margin: 0 6px; /* 减小间距，因为按钮变大了 */
 }
 
 .nav-links a {
     color: #1d1d1f;
     text-decoration: none;
-    font-size: 18px;
-    opacity: 0.8;
-    transition: all 0.2s ease; /* 新增all过渡，支持多属性变化 */
+    font-size: 16px; /* 字体稍微改小更精致 */
+    font-weight: 500;
+    padding: 10px 18px; /* 增加内边距形成按钮 */
+    border-radius: 20px; /* 胶囊形状 */
+    transition: all 0.3s ease;
     position: relative;
+    /* 默认透明边框，占位防止抖动 */
+    border: 1px solid transparent;
 }
 
-/* INS风格导航链接hover下划线 */
-.nav-links a:hover {
-    opacity: 1;
-}
+/* 移除旧的下划线样式，改用 3D 胶囊 */
 .nav-links a:after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #0071e3, #00c6ff); /* INS渐变 */
-    border-radius: 2px;
-    transition: width 0.3s ease;
-}
-.nav-links a:hover:after {
-    width: 100%;
+    display: none;
 }
 
-/* 页头（参考苹果产品标题区 + INS渐变文字） */
+/* --- 核心交互：Hover 变成 3D 玻璃胶囊 --- */
+.nav-links a:hover {
+    color: #0071e3;
+    background: rgba(255, 255, 255, 0.6);
+    /* 双线边框感：利用 border + box-shadow */
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 4px 12px rgba(0, 113, 227, 0.1), /* 底部投影 */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5); /* 内部第二条高光线 */
+    transform: translateY(-1px);
+}
+
+/* 选中状态/点击态：更深的凹陷感 */
+.nav-links a:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 响应式微调 */
+@media (max-width: 768px) {
+    .nav-links a {
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 页头 */
 .header {
     text-align: center;
     padding: 60px 0 40px;
@@ -202,15 +278,15 @@ body {
     padding: 20px 0 80px;
 }
 
-/* 卡片组件（苹果风格 + INS增强阴影+渐变边框） */
+/* 卡片组件 */
 .card {
     background-color: #fff;
-    border-radius: 16px; /* 增大圆角，INS风格 */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 8px 30px rgba(0, 0, 0, 0.02); /* INS轻阴影 */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 8px 30px rgba(0, 0, 0, 0.02);
     padding: 40px;
     margin-bottom: 40px;
     transition: all 0.3s ease; /* 增强过渡效果 */
-    /* INS渐变边框技巧 */
+
     position: relative;
     overflow: hidden;
 }
@@ -225,13 +301,13 @@ body {
     background: linear-gradient(90deg, #0071e3, #00c6ff, #0071e3);
     border-radius: 16px 16px 0 0;
 }
-/* 增强hover效果，INS风格悬浮 */
+
 .card:hover {
     transform: translateY(-5px); /* 增大上浮距离 */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 12px 40px rgba(0, 0, 0, 0.05); /* 增强阴影 */
 }
 
-/* 标题样式（层级清晰 + INS细节） */
+/* 标题样式 */
 .section-title {
     font-size: 28px;
     font-weight: 600;
@@ -239,7 +315,6 @@ body {
     color: #1d1d1f;
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 12px;
-    /* INS标题装饰 */
     position: relative;
 }
 .section-title:after {
@@ -257,7 +332,6 @@ body {
     font-weight: 500;
     margin: 32px 0 16px;
     color: #1d1d1f;
-    /* INS小标题点缀 */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -269,18 +343,17 @@ body {
     background: #0071e3;
     border-radius: 2px;
 }
-
-/* 文本样式 + INS行高优化 */
+/* 文本样式 */
 .text-content {
     font-size: 17px;
     color: #424245;
-    line-height: 1.85; /* 优化行高，INS更舒适 */
+    line-height: 1.85; /* 优化行高 */
     margin-bottom: 20px;
-    /* INS轻微文字质感 */
+    /* 轻微文字质感 */
     text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.01);
 }
 
-/* 列表样式（苹果极简列表 + INS圆点优化） */
+/* 列表样式 */
 .custom-list {
     list-style: none;
     margin-bottom: 30px;
@@ -295,7 +368,7 @@ body {
     line-height: 1.8;
 }
 
-/* INS风格渐变圆点 */
+/* 渐变圆点 */
 .custom-list li:before {
     content: "";
     width: 8px;
@@ -305,14 +378,13 @@ body {
     position: absolute;
     left: 0;
     top: 10px;
-    box-shadow: 0 0 6px rgba(0, 113, 227, 0.2); /* INS光晕效果 */
+    box-shadow: 0 0 6px rgba(0, 113, 227, 0.2); /* 光晕效果 */
 }
 
-/* 多媒体容器（居中+圆角 + INS外框） */
+/* 多媒体容器 */
 .media-container {
     margin: 36px 0;
     text-align: center;
-    /* INS风格容器装饰 */
     padding: 16px;
     background: #f8f8fa;
     border-radius: 16px;
@@ -328,29 +400,28 @@ body {
     font-weight: 500;
     margin-bottom: 16px;
     color: #1d1d1f;
-    /* INS标题渐变 */
     background: linear-gradient(90deg, #1d1d1f, #6e6e73);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-/* 媒体元素样式（苹果风格 + INS增强圆角+阴影） */
+/* 媒体元素样式 */
 img, video, audio, embed {
-    border-radius: 12px; /* 增大圆角，INS风格 */
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08), 0 8px 30px rgba(0, 0, 0, 0.04); /* INS立体阴影 */
+    border-radius: 12px; /* 增大圆角 */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08), 0 8px 30px rgba(0, 0, 0, 0.04);
     max-width: 100%;
     height: auto;
-    transition: transform 0.3s ease; /* INS悬浮缩放 */
+    transition: transform 0.3s ease;
 }
 img:hover, video:hover {
-    transform: scale(1.01); /* 轻微缩放，INS交互感 */
+    transform: scale(1.01); /* 轻微缩放 */
 }
 
-/* 代码块样式（苹果终端风格 + INS渐变边框） */
+/* 代码块样式 */
 .code-block {
     background-color: #f5f5f7;
-    border-radius: 12px; /* INS圆角 */
+    border-radius: 12px;
     padding: 20px;
     font-family: "SF Mono", Menlo, Monaco, monospace;
     font-size: 14px;
@@ -358,7 +429,6 @@ img:hover, video:hover {
     overflow-x: auto;
     margin: 16px 0 24px;
     line-height: 1.6;
-    /* INS渐变边框 */
     border: 1px solid #f0f0f0;
     position: relative;
 
@@ -387,7 +457,7 @@ img:hover, video:hover {
     background: #27ca3f;
 }
 
-/* 超链接样式（苹果蓝 + INS渐变下划线） */
+/* 超链接样式 */
 .link {
     color: #0071e3;
     text-decoration: none;
@@ -407,7 +477,7 @@ img:hover, video:hover {
     height: 2px;
     bottom: -2px;
     left: 0;
-    background: linear-gradient(90deg, #0071e3, #00c6ff); /* INS渐变下划线 */
+    background: linear-gradient(90deg, #0071e3, #00c6ff);
     border-radius: 1px;
     transition: width 0.2s ease;
 }
@@ -416,26 +486,26 @@ img:hover, video:hover {
     width: 100%;
 }
 
-/* 按钮样式（苹果圆角按钮 + INS渐变+阴影） */
+/* 按钮样式 */
 .btn {
     display: inline-block;
-    background: linear-gradient(90deg, #0071e3, #0087ff); /* INS渐变背景 */
+    background: linear-gradient(90deg, #0071e3, #0087ff);
     color: #fff;
     padding: 10px 24px;
-    border-radius: 28px; /* 增大圆角，INS风格 */
+    border-radius: 28px; /* 增大圆角 */
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
     transition: all 0.2s ease; /* 增强过渡 */
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2); /* INS按钮阴影 */
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2);
 }
 
 .btn:hover {
     background: linear-gradient(90deg, #0087ff, #00c6ff); /* 渐变hover */
     color: #fff;
-    transform: translateY(-2px); /* INS悬浮上浮 */
+    transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3); /* 增强阴影 */
 }
 
@@ -459,64 +529,148 @@ img:hover, video:hover {
     padding-top: 80px;
 }
 
-/* 页脚（苹果简约页脚 + INS斜纹背景） */
-.footer {
-    background-color: #f5f5f7;
+/* 3D 极光玻璃页脚 (Footer 样式)*/
+/* 容器定位与背景画布 */
+.footer-3d {
+    position: relative;
+    padding: 50px 0;
+    background-color: #fbfbfd; /* 浅灰底色 */
+    overflow: hidden; /* 防止光晕溢出 */
+    margin-top: 60px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- 背景层：3D网格与光晕 --- */
+.footer-decor {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 3D透视网格线 */
+.grid-lines {
+    position: absolute;
+    width: 100%; height: 100%;
     background-image:
-        linear-gradient(135deg, rgba(0, 113, 227, 0.03) 25%, transparent 40%),
-        linear-gradient(-45deg, rgba(0, 113, 227, 0.03) 25%, transparent 40%);
-    background-size: 30px 30px;
-    padding: 40px 0;
-    color: #6e6e73;
-    font-size: 15px;
-    border-top: 1px solid #e6e6e6;
+        linear-gradient(rgba(0, 113, 227, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 113, 227, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    /* 关键：制造3D空间纵深感 */
+    transform: perspective(500px) rotateX(60deg) scale(2);
+    transform-origin: top center;
+    opacity: 0.8;
 }
 
-.footer-content {
-    width: 980px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* 弥散光球动画 */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px); /* 强模糊 */
+    opacity: 0.5;
+    animation: floatBlob 8s infinite ease-in-out alternate;
+}
+.blob-1 {
+    width: 300px; height: 300px;
+    background: linear-gradient(135deg, #0071e3, #6a11cb); /* 蓝紫渐变 */
+    top: -80px; left: -50px;
+}
+.blob-2 {
+    width: 250px; height: 250px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff); /* 青蓝渐变 */
+    bottom: -40px; right: -40px;
+    animation-delay: -4s;
 }
 
+@keyframes floatBlob {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20px, 30px) scale(1.1); }
+}
+
+/* --- 内容层：毛玻璃悬浮舱 --- */
+/* 复用您原本的 airglass 类，这里做针对性微调 */
+.footer-glass {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.65); /* 高透玻璃 */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 20px 40px rgba(0, 113, 227, 0.08), /* 蓝色环境光阴影 */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5); /* 内部高光 */
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 980px; /* 限制最大宽度 */
+    margin: 0 auto;   /* 居中 */
+}
+
+/* 如果屏幕小，左右留点空隙 */
+@media (max-width: 1024px) {
+    .footer-glass { margin: 0 20px; width: auto; }
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 内容居中 */
+    gap: 30px;
+}
+
+/* --- 链接样式优化 --- */
 .footer-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.footer-links a {
-    color: #6e6e73;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    position: relative;
-}
-/* INS页脚链接hover效果 */
-.footer-links a:hover {
-    color: #0071e3;
-}
-.footer-links a:after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: #0071e3;
-    transition: width 0.2s ease;
-}
-.footer-links a:hover:after {
+    justify-content: center;
+    gap: 20px 30px; /* 行间距20，列间距30 */
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* 细分割线 */
     width: 100%;
 }
 
-.copyright {
-    border-top: 1px solid #e6e6e6;
-    padding-top: 20px;
-    /* INS文字渐变 */
-    background: linear-gradient(90deg, #6e6e73, #999);
+.footer-links a {
+    text-decoration: none;
+    color: #424245;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    background: linear-gradient(90deg, #0071e3, #00c6ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    transform: translateY(-2px); /* 轻微上浮 */
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0071e3, #00c6ff);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+/* --- 版权信息样式 --- */
+.footer-bottom {
+    text-align: center;
+}
+
+.copyright {
+    font-size: 13px;
+    color: #86868b;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
 /* 响应式适配（保持INS风格） */

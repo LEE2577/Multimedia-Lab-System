@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实验2：机械臂垃圾分类控制系统实现</title>
+    <title>课程2：机械臂垃圾分类控制系统实现</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="media/images/校徽.png">
 </head>
@@ -13,23 +13,22 @@
         <div class="nav-content container">
             <a href="index.html" class="logo">
                 <img src="media/images/校徽.png" alt="多媒体实验平台logo" class="logo-img">
-                多媒体课程实验在线平台</a>
+                多媒体技术微课在线平台</a>
             <ul class="nav-links">
                 <li><a href="index.html">返回首页</a></li>
-                <li><a href="experiment1.html">实验1</a></li>
-                <li><a href="experiment3.html">实验3</a></li>
-                <li><a href="experiment4.html">实验4</a></li>
-                <li><a href="#content" class="link">实验内容</a></li>
-                <li><a href="#algorithm" class="link">算法原理</a></li>
-                <li><a href="#steps" class="link">实验步骤</a></li>
+                <li><a href="experiment1.html">课程1</a></li>
+                <li><a href="experiment3.html">课程3</a></li>
+                <li><a href="experiment4.html">课程4</a></li>
+                <li><a href="#content" class="link">课程内容</a></li>
+                <li><a href="#steps" class="link">实践步骤</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- 苹果风格页头 -->
     <header class="header">
-        <h1>实验 2：机械臂垃圾分类控制系统实现</h1>
-        <p>理解myCobot 280机械臂原理 · 实现视觉识别+垃圾分类控制</p>
+        <h1>课程 2：机械臂创新实践</h1>
+        <p>理解myCobot 280机械臂原理 · 视觉识别+大模型交互</p>
     </header>
 
     <!-- 核心内容区（卡片式布局） -->
@@ -38,22 +37,38 @@
             <!-- 实验内容卡片 -->
             <div class="card">
                 <div id="content" class="anchor"></div>
-                <h2 class="section-title">一、实验内容</h2>
+                <h2 class="section-title">一、课程内容</h2>
 
-                <h3 class="sub-title">1. 实验目标与内容</h3>
+                <h3 class="sub-title">1. 微课视频</h3>
+                <div class="media-container">
+                    <h3>微课视频</h3>
+
+                    <!-- 新增一个 wrapper 包裹层 -->
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+                        <iframe
+                            src="https://player.bilibili.com/player.html?bvid=BV1njqrBVEri&page=1&high_quality=1&danmaku=0"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            scrolling="no"
+                            border="0"
+                            frameborder="no"
+                            framespacing="0"
+                            allowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+                <h3 class="sub-title">2. 课程目标与内容</h3>
                 <ul class="custom-list">
-                    <li>分组讨论，理解机械臂的工作原理</li>
-                    <li>分析垃圾分类的算法原理</li>
+                    <li>理解机械臂的工作原理</li>
                     <li>编程实现对机械臂进行控制，完成分类动作</li>
-                    <li>分析实验中存在的问题，如何进行改进</li>
-                    <li>思考：创新机械臂的应用场景</li>
+                    <li>通过语音调用大模型，完成具体的机械臂工作任务</li>
+                    <li>扩展任务：构建一个 “语音 → 理解 → 感知 → 动作 → 反馈” 的完整闭环系统</li>
                 </ul>
 
-                <h3 class="sub-title">2. 机械臂构成及工作原理</h3>
+                <h3 class="sub-title">3. 机械臂构成及工作原理</h3>
 
-                <h4 style="font-size: 18px; margin: 20px 0 12px; color: #1d1d1f; font-weight: 500;">2.1 机械臂构成</h4>
+                <h4 style="font-size: 18px; margin: 20px 0 12px; color: #1d1d1f; font-weight: 500;">3.1 机械臂构成</h4>
                 <p class="text-content">
-                    myCobot 280 JN (2023) 小象协作机械臂是一款采用铝合金材质的六自由度协作机械臂。其核心构成包括：六个一体化智能关节模组，每个模组都集成了无刷伺服电机、高精度减速器、驱动电路与反馈传感器。臂体末端是标准的M5接口，可便捷安装电动夹爪或吸盘等末端执行器。作为控制中枢，机械臂的底部内置了嵌入式主板，并预装了myStudio可视化编程系统。此外，它提供了多种连接与控制方式，如Type-C、Wi-Fi、蓝牙，并支持通过Python、RoboFlow等高级语言和平台进行二次开发。
+                    myCobot 280 JN (2023) 小象协作机械臂是一款采用铝合金材质的六自由度协作机械臂。
                 </p>
                 <p class="text-content">主要包含5个子系统：</p>
                 <ul class="custom-list">
@@ -64,103 +79,223 @@
                     <li>交互系统：“人机界面”，如实现人与信息交流与控制。</li>
                 </ul>
 
-                <h4 style="font-size: 18px; margin: 20px 0 12px; color: #1d1d1f; font-weight: 500;">2.2 机械臂工作原理</h4>
+                <h4 style="font-size: 18px; margin: 20px 0 12px; color: #1d1d1f; font-weight: 500;">3.2 机械臂工作原理</h4>
                 <p class="text-content">
                     myCobot 280的工作原理基于对六个关节的协同控制。用户通过图形化myStudio或代码指令，向机械臂的控制系统发送目标位置和姿态信息。控制系统依据运动学算法，实时解算出每个关节需要转动的精确角度。在关节控制中，控制系统直接对六个关节进行独立或协同驱动。通过如send_angle()或send_angles()等指令，指定每个关节的目标角度及运动速度。控制系统直接将指令下发至各一体化关节模组，驱动电机转动，使所有关节以指定速度同步到达目标位置，从而实现机械臂的姿态变化。
                 </p>
-                <p class="text-content">
-                    为实现更复杂的终端运动，myCobot采用了坐标控制。在此模式下，通过send_coords()指令，给定机械臂末端在三维空间中的目标位置[x, y, z]和姿态[rx, ry, rz]。控制系统内置的逆运动学算法会实时解算，将这一目标坐标转换为实现该位形所需的六个关节角度序列。随后，系统自动调用多关节控制功能，驱动所有关节协同运动。
-                </p>
-
                 <!-- 机械臂实物展示图 -->
                 <div class="media-container">
-                    <img src="media/images/mycobot-280.jpg" alt="myCobot 280 机械臂实物图" width="800">
+                    <img src="media/images/mycobot.png" alt="myCobot 280 机械臂" width="800">
                 </div>
-            </div>
 
-            <!-- 算法原理卡片 -->
-            <div class="card">
-                <div id="algorithm" class="anchor"></div>
-                <h2 class="section-title">二、算法原理</h2>
-                <p class="text-content">
-                    myCobot 280 垃圾分类实验基于“大模型指令+视觉识别+机械臂执行”的闭环控制原理。系统主要依靠三个核心工具：拍照工具 take_photo、抓取工具 grab_object 和移动工具 move_to。首先，拍照工具负责在抓取区或放置区获取场景图像，为视觉识别提供数据源，并通过枚举参数限制区域类型，保证操作安全和精确。抓取工具读取拍摄的图像，调用视觉API分析指定物体的像素坐标，并转换为机械臂坐标，同时应用配置偏移量提高抓取精度。随后，机械臂执行抓取动作，将物体从抓取区域拿起。当目标为物体名称时，需要在放置区拍照，视觉API自动定位放置位置。机械臂先移动到目标上方，再下降到设定高度，完成放置并抬起返回初始位置。
-                </p>
-                <p class="text-content">以“grab fish bone and move to 80,200”为例，执行流程：</p>
-                <ol class="custom-list" style="list-style-type: decimal; padding-left: 30px;">
-                    <li>系统调用 take_photo(area_description="grabbing_area") 拍摄抓取区域的图像，以便视觉模型识别鱼骨方块的位置。</li>
-                    <li>grab_object(object_name="fish bone") 读取拍摄的图像，利用视觉API定位鱼骨方块的像素坐标，转换为机械臂坐标并执行抓取动作，夹取鱼骨方块。</li>
-                    <li>系统调用 take_photo(area_description="placement_area") 拍摄放置区域图像，准备将物体放入指定位置。</li>
-                    <li>move_to(target=[80, 200], target_height=110) 将机械臂移动到目标坐标上方，下降至设定高度完成放置动作，并抬起返回初始位置。</li>
-                </ol>
 
-                <!-- 视频 -->
-                <div class="media-item">
-                    <h3>实验示例</h3>
-                    <video width="800" height="500" controls>
-                        <source src="media/video/" type="video/MPG">
-                        您的浏览器不支持视频播放
-                    </video>
-                </div>
             </div>
 
             <!-- 实验步骤卡片 -->
             <div class="card">
                 <div id="steps" class="anchor"></div>
-                <h2 class="section-title">三、实验步骤</h2>
+                <h2 class="section-title">二、基础实验</h2>
                 <p class="text-content">运行样例：</p>
                 <div class="code-block">
                   在样例目录中，运行 sudo python3 agent.py。稍等几秒后，命令行界面出现提示符 < USER >:
                 </div>
 
-                <h3 class="sub-title">1.根据方块颜色进行分类</h3>
-                <p class="text-content">运行指令：</p>
-                <div class="code-block">
-< USER >:grab red cube and move to 50,220
-                </div>
-                <p class="text-content">
-                    系统解析后调用两个核心函数，grab_object：参数是{"object_name": "red cube"}，用于定位并抓取红色立方体；move_to：参数是{"target_coord": [50, 220], "target_height": 110}，用于将物体移动到目标坐标。
-                </p>
-                <p class="text-content">然后是像素坐标→机械臂物理坐标的转换过程：</p>
-                <p class="text-content">
-                    先通过相机视觉识别得到物体的像素区域，即[x1: 177, x2: 381, y1: 636, y2: 886]，然后计算出物体中心的像素坐标：(178.56, 365.28)，再通过相机标定/机械臂标定的转换关系，将像素坐标映射为机械臂基坐标系下的物理坐标：[161.8 45.3]。
-                </p>
-                <p class="text-content">
-                    函数执行后，日志输出目标坐标[50, 220]，并显示最终状态：Objects arranged successfully，说明机械臂已完成 “抓取→移动→放置” 的全流程。
-                </p>
-
-                <h3 class="sub-title">2. 移动蓝色方块</h3>
+                <h3 class="sub-title">1. 移动蓝色方块</h3>
                 <p class="text-content">执行指令：</p>
                 <div class="code-block">
 grab blue cube and move to -80,200
                 </div>
                 <p class="text-content">
-                    这张图片是移动蓝色方块的机械臂操作日志，指令为抓取蓝色方块并移动至坐标 - 80,200，系统调用grab_object和move_to函数执行，视觉识别出蓝色立方体的像素区域为 [144,309,923,983]，其中心像素坐标 (144.96,457.44) 被转换为机械臂物理坐标 [129.7 55.3]，再通过机械臂运动控制实现蓝色方块的移动。
+                    下图是开发板终端界面，指令为抓取蓝色方块并移动至坐标 - 80,200，系统调用grab_object和move_to函数执行，视觉识别出蓝色立方体的像素区域为 [522,688,598,842]，其中心像素坐标 (387.2,354.59) 被转换为机械臂物理坐标 [168.5,-18.7]，再通过机械臂运动控制实现蓝色方块的移动。
                 </p>
+                <div class="media-container">
+                    <img src="media/images/mycobot1.png" alt="mycobot1" width="800">
+                </div>
 
-                <h3 class="sub-title">3. 移动书本</h3>
+                <h3 class="sub-title">2. 移动书本</h3>
                 <p class="text-content">执行指令为：</p>
                 <div class="code-block">
 grab book and move to -80,220
                 </div>
                 <p class="text-content">
-                    系统调用grab_object，参数{"object_name": "book"}和move_to参数{"target_coord": [-80,220], "target_height": 110}两个函数执行任务。
-                </p>
-                <p class="text-content">
-                    先通过视觉系统连接大模型，判定哪个方块为目标书本，识别出书本的像素区域为[x1:523, x2:713, y1:586, y2:851]，计算出中心像素坐标(395.52, 344.88)，再通过手眼标定转换为机械臂物理坐标[168.8 -21.2]，最终日志显示 “机械臂已成功抓取书本并将其移动到坐标 (-80,220) 位置，且输出Objects arranged successfully，说明过程完成。
+                    通过视觉系统连接大模型，判定哪个方块为目标书本，识别出书本的像素区域为[x1:523, x2:713, y1:586, y2:851]，计算出中心像素坐标(395.52, 344.88)，再通过手眼标定转换为机械臂物理坐标[168.8 -21.2]，最终日志显示 “机械臂已成功抓取书本并将其移动到坐标 (-80,220) 位置，且输出Objects arranged successfully，说明过程完成。
                 </p>
 
                 <!-- 实验操作截图 -->
                 <div class="media-container">
-                    <img src="media/images/experiment-operation.jpg" alt="机械臂垃圾分类实验操作截图" width="800">
+                    <img src="media/images/mycobot2.png" alt="mycobot2" width="800">
                 </div>
 
-                <!-- 苹果风格操作按钮 -->
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="experiment1.html" class="btn btn-outline">返回实验1</a>
-                    <a href="experiment3.html" class="btn" style="margin-left: 15px;">进入实验3</a>
-                </div>
             </div>
 
+            <div class="card">
+                <h2 class="section-title">三、扩展实验</h2>
+
+                <p class="text-content">
+                    本扩展实验基于 Gradio 构建浏览器语音录制界面，
+                    实现通过网页完成麦克风录音，并将语音保存为 FLAC 文件。
+                    随后，机械臂控制程序将自动读取语音文件，
+                    完成语音解析与动作执行，
+                    构成一条完整的
+                    <strong>“语音 → 指令 → 机械臂动作”</strong>
+                    实验链路。
+                </p>
+
+                <p class="text-content">
+                    该实验用于验证语音输入在真实硬件系统中的可用性，
+                    同时为后续语音识别、大模型理解和机械臂协同控制
+                    提供基础数据与接口支持。
+                </p>
+
+                <p class="text-content">
+                    本实验重点包括：
+                    <br>1）基于 conda 的 Python 3.10 虚拟环境准备
+                    <br>2）使用 Gradio 构建 Web 端语音录制界面
+                    <br>3）将录音保存为统一命名的 FLAC 文件
+                    <br>4）语音文件驱动机械臂执行动作
+                </p>
+
+                <h3 class="sub-title">1. Web 语音录制说明</h3>
+
+                <p class="text-content">
+                    启动语音录制程序后，在浏览器中打开对应页面，
+                    可以看到 Jetson FLAC 录音界面。
+                    用户通过点击录音按钮即可开始录制语音，
+                    再次点击则结束录音。
+                </p>
+
+                <p class="text-content">
+                    录音过程完全在浏览器中完成，
+                    无需额外安装插件，
+                    适合在本机或局域网内的其他设备上使用。
+                </p>
+
+                <p class="text-content">
+                    录音完成后系统将自动执行以下操作：
+                    <br>• 将语音保存为 <code>current_recording.flac</code>
+                    <br>• 在页面中显示录音状态、采样率与时长信息
+                    <br>• 提供录音回放功能，用于确认语音内容是否清晰、完整
+                </p>
+
+                <div class="media-container">
+                    <img src="media/images/mycobot4.png" alt="myCobot4" width="800">
+                </div>
+
+                <h3 class="sub-title">2. 生成机械臂可用语音文件</h3>
+
+                <p class="text-content">
+                    为便于机械臂程序稳定读取语音文件，
+                    本实验采用固定文件名的方式进行数据传递。
+                </p>
+
+                <p class="text-content">
+                    在录音确认无误后，
+                    点击页面底部按钮：
+                    <br><strong>“执行指令：复制到 Recording.flac”</strong>
+                </p>
+
+                <p class="text-content">
+                    系统会自动将最新录音复制并重命名为：
+                    <br><code>Recording.flac</code>
+                    <br>该文件位于机械臂控制程序的工作目录中，
+                    无需人工干预即可被后续程序读取。
+                </p>
+
+                <div class="media-container">
+                    <img src="media/images/mycobot5.png" alt="myCobot5" width="800">
+                </div>
+
+                <h3 class="sub-title">3. 启动机械臂程序</h3>
+
+                <p class="text-content">
+                    机械臂控制程序依赖系统原生 Python 环境，
+                    因此在启动前需要确保已经退出 conda 虚拟环境。
+                </p>
+
+                <p class="text-content">
+                    ⚠ 注意：若在虚拟环境中运行，
+                    可能会出现库缺失或硬件接口无法访问的问题。
+                </p>
+
+                <div class="code-block">
+            # 退出虚拟环境
+            conda deactivate
+
+            # 启动机械臂语音控制程序
+            python3 agent2.py -v
+                </div>
+
+                <p class="text-content">
+                    程序启动后，
+                    将自动检测当前目录下的 <code>Recording.flac</code> 文件，
+                    并对其中的语音内容进行解析，
+                    根据识别结果生成对应的机械臂控制指令。
+                </p>
+
+                <!-- 此处可插入：机械臂程序终端运行截图 -->
+                <!-- <div class="media-container">
+                    <img src="media/images/xxx.png" alt="机械臂程序运行">
+                </div> -->
+
+                <h3 class="sub-title">4. 语音指令示例</h3>
+
+                <p class="text-content">
+                    为提高语音识别与指令解析的准确率，
+                    建议在录音时使用结构清晰、语速适中的表达方式，
+                    避免含糊或过长的自由描述。
+                </p>
+
+                <p class="text-content">
+                    示例指令如下：
+                    <br><code>移动到 x 等于 0，y 等于 200</code>
+                </p>
+
+                <p class="text-content">
+                    采用“动作 + 参数”的表达方式，
+                    有助于系统准确提取关键控制信息，
+                    并减少误识别的可能性。
+                </p>
+
+                <h3 class="sub-title">5. 注意事项</h3>
+
+                <p class="text-content">
+                    1）浏览器访问地址应使用 <code>localhost:7860</code> 或开发板 IP 地址，
+                    而不是 0.0.0.0
+                    <br>2）录音前请检查系统 Sound 设置中的输入设备是否选择正确
+                    <br>3）录音时观察输入音量条，确保有明显变化
+                    <br>4）仅在权限或接口报错时才使用 <code>sudo python3 agent.py</code>
+                </p>
+            </div>
+
+
+
+
+
+
+            </div>
+            <!-- 思考题卡片 -->
+            <div class="card">
+                <h2 class="section-title">三、实验结果演示</h2>
+                <div class="media-container">
+
+                    <!-- 新增一个 wrapper 包裹层 -->
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+                        <iframe
+                            src="https://player.bilibili.com/player.html?bvid=BV1AFq2B8Ei9&page=1&high_quality=1&danmaku=0"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            scrolling="no"
+                            border="0"
+                            frameborder="no"
+                            framespacing="0"
+                            allowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="experiment1.html" class="btn btn-outline">返回课程1</a>
+                    <a href="experiment3.html" class="btn" style="margin-left: 15px;">进入课程3</a>
+                </div>
+            </div>
         </div>
     </main>
 <!-- 页脚：3D极光玻璃风格 -->
@@ -178,10 +313,10 @@ grab book and move to -80,220
                 <!-- 导航链接 -->
                 <div class="footer-links">
                     <a href="index.html">首页</a>
-                    <a href="experiment1.html">实验1</a>
-                    <a href="experiment2.html">实验2</a>
-                    <a href="experiment3.html">实验3</a>
-                    <a href="experiment4.html">实验4</a>
+                    <a href="experiment1.html">课程1</a>
+                    <a href="experiment2.html">课程2</a>
+                    <a href="experiment3.html">课程3</a>
+                    <a href="experiment4.html">课程4</a>
                     <a href="https://www.elephantrobotics.com/mycobot-280/" target="_blank">myCobot 280 官方文档</a>
                     <a href="https://docs.elephantrobotics.com/docs/zh-CN/2.0/myCobot/280/jn/python_api/" target="_blank">Python API 参考</a>
                 </div>
@@ -189,7 +324,7 @@ grab book and move to -80,220
                 <!-- 版权信息 -->
                 <div class="footer-bottom">
                     <p class="copyright">
-                        © 2025 多媒体课程实验在线平台 · 版权所有
+                        © 2025 多媒体技术微课在线平台 · 版权所有
                     </p>
                 </div>
             </div>

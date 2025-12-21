@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>多媒体课程实验在线平台</title>
+    <title>多媒体技术微课在线平台</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="media/images/校徽.png">
 </head>
@@ -13,13 +13,13 @@
         <div class="nav-content container">
             <a href="index.html" class="logo">
                 <img src="media/images/校徽.png" alt="多媒体实验平台logo" class="logo-img">
-                多媒体课程实验在线平台</a>
+                多媒体技术微课在线平台</a>
             <ul class="nav-links">
                 <li><a href="index.html">首页</a></li>
-                <li><a href="experiment1.html">实验1</a></li>
-                <li><a href="experiment2.html">实验2</a></li>
-                <li><a href="experiment3.html">实验3</a></li>
-                <li><a href="experiment4.html">实验4</a></li>
+                <li><a href="experiment1.html">课程1</a></li>
+                <li><a href="experiment2.html">课程2</a></li>
+                <li><a href="experiment3.html">课程3</a></li>
+                <li><a href="experiment4.html">课程4</a></li>
                 <li><a href="https://www.w3school.com.cn/html/html5_intro.asp" target="_blank" class="link">参考教程</a></li>
             </ul>
         </div>
@@ -27,18 +27,35 @@
 
     <!-- 页头 -->
     <header class="header">
-        <h1>多媒体课程实验在线平台</h1>
+        <h1>多媒体技术微课在线平台</h1>
         <p>实践 · 极简 · 创新</p>
     </header>
 
     <!-- 主要内容 -->
     <main class="container">
         <div class="content">
+            <!-- 多媒体演示卡片 -->
+            <div class="card">
+                <h2 class="section-title">平台宣传片</h2>
+                <div class="media-container">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+                        <iframe
+                            src="https://player.bilibili.com/player.html?bvid=BV16QqUBaEpC&page=1&high_quality=1&danmaku=0"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            scrolling="no"
+                            border="0"
+                            frameborder="no"
+                            framespacing="0"
+                            allowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
             <!-- 平台简介卡片 -->
             <div class="card">
                 <h2 class="section-title">平台简介</h2>
                 <p class="text-content">
-                    本平台整合多媒体课程核心实验，涵盖 RAG检索增强知识问答系统、基于机械臂的垃圾智能分类、视频编辑、网页制作四大模块。每个实验均提供详细的操作指南、代码示例及作品展示，帮助学习者快速掌握多媒体课程中的核心技能。
+                    本平台整合多媒体技术课程核心内容，涵盖 RAG检索增强知识问答系统、基于机械臂的垃圾智能分类、视频编辑、网页制作四大课程。每个课程均提供详细的操作指南、代码示例及作品展示，帮助学习者快速掌握多媒体课程中的核心技能。
                 </p>
                 <div class="media-container">
                     <img src="media/images/预览图.png" alt="平台预览图" width="800">
@@ -47,42 +64,24 @@
 
             <!-- 实验列表卡片 -->
             <div class="card">
-                <h2 class="section-title">实验列表</h2>
+                <h2 class="section-title">课程列表</h2>
                 <ul class="custom-list">
                     <li>
-                        <a href="experiment1.html" class="link">实验1：RAG检索增强知识问答系统</a> - 结合文档检索与大语言模型，实现精准、可追溯的智能问答技术实践
+                        <a href="experiment1.html" class="link">课程1：RAG检索增强知识问答系统</a> - 结合文档检索与大语言模型，实现精准、可追溯的智能问答技术实践
                     </li>
                     <li>
-                        <a href="experiment2.html" class="link">实验2：基于机械臂的垃圾智能分类</a> - 融合计算机视觉与运动控制，实现垃圾识别、定位与自动分拣的端到端实践
+                        <a href="experiment2.html" class="link">课程2：机械臂创新实践</a> - 融合计算机视觉与运动控制，实现垃圾识别、定位与自动分拣的端到端实践
                     </li>
                     <li>
-                        <a href="experiment3.html" class="link">实验3：视频编辑</a> - 掌握音视频编辑、剪辑拼接、特效添加等多媒体核心技术
+                        <a href="experiment3.html" class="link">课程3：视频编辑</a> - 掌握音视频编辑、剪辑拼接、特效添加等多媒体核心技术
                     </li>
                     <li>
-                        <a href="experiment4.html" class="link">实验4：网页制作</a> - 运用 HTML/CSS 构建响应式界面，集成多媒体元素的前端开发
+                        <a href="experiment4.html" class="link">课程4：网页制作</a> - 运用 HTML/CSS 构建响应式界面，集成多媒体元素的前端开发
                     </li>
                 </ul>
+
                 <div style="text-align: center; margin-top: 30px;">
                     <a href="experiment1.html" class="btn">开始学习</a>
-                </div>
-            </div>
-
-            <!-- 多媒体演示卡片 -->
-            <div class="card">
-                <h2 class="section-title">多媒体演示</h2>
-                <div class="media-item">
-                    <h3>平台介绍视频</h3>
-                    <video width="800" controls>
-                        <source src="media/video/platform-demo.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放
-                    </video>
-                </div>
-                <div class="media-item">
-                    <h3>背景音乐（轻柔模式）</h3>
-                    <audio controls loop style="max-width: 600px;">
-                        <source src="media/audio/bg-music.mp3" type="audio/mp3">
-                        您的浏览器不支持音频播放
-                    </audio>
                 </div>
             </div>
         </div>
@@ -102,16 +101,16 @@
                 <!-- 您的导航链接 -->
                 <div class="footer-links">
                     <a href="index.html">首页</a>
-                    <a href="experiment1.html">实验1</a>
-                    <a href="experiment2.html">实验2</a>
-                    <a href="experiment3.html">实验3</a>
-                    <a href="experiment4.html">实验4</a>
+                    <a href="experiment1.html">课程1</a>
+                    <a href="experiment2.html">课程2</a>
+                    <a href="experiment3.html">课程3</a>
+                    <a href="experiment4.html">课程4</a>
                     <a href="https://www.w3school.com.cn/html/html5_intro.asp" target="_blank">W3School教程</a>
                 </div>
 
                 <!-- 您的版权信息 -->
                 <div class="footer-bottom">
-                    <p class="copyright">© 2025 多媒体课程实验在线平台 · 版权所有</p>
+                    <p class="copyright">© 2025 多媒体技术微课在线平台 · 版权所有</p>
                 </div>
             </div>
         </div>

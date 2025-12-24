@@ -8,6 +8,14 @@
     <link rel="icon" href="media/images/校徽.png">
 </head>
 <body>
+<div class="meteor-shower">
+        <!-- 这里只放流星的 i 标签 -->
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i>
+    </div>
     <!-- 苹果风格毛玻璃导航栏 -->
     <nav class="nav-bar airglass">
         <div class="nav-content container">
@@ -42,19 +50,20 @@
                 <h3 class="sub-title">1. 微课视频</h3>
                 <div class="media-container">
                     <h3>微课视频</h3>
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background-color: #000;">
+                            <video
+                                controls
+                                playsinline
+                                preload="metadata"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                poster="media/images/机械臂创新实践-封面.jpg"
+                            >
+                                <!-- 👇 请在下方引号内填入你的腾讯云 COS 视频链接 👇 -->
+                                <source src="https://multimedia-1393180726.cos.ap-shanghai.myqcloud.com/video/%E6%9C%BA%E6%A2%B0%E8%87%82%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5.mp4" type="video/mp4">
 
-                    <!-- 新增一个 wrapper 包裹层 -->
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
-                        <iframe
-                            src="https://player.bilibili.com/player.html?bvid=BV1njqrBVEri&page=1&high_quality=1&danmaku=0"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                            scrolling="no"
-                            border="0"
-                            frameborder="no"
-                            framespacing="0"
-                            allowfullscreen="true">
-                        </iframe>
-                    </div>
+                                您的浏览器不支持 HTML5 视频标签。
+                            </video>
+                        </div>
                 </div>
                 <h3 class="sub-title">2. 课程目标与内容</h3>
                 <ul class="custom-list">
@@ -277,20 +286,21 @@ grab book and move to -80,220
             <div class="card">
                 <h2 class="section-title">三、实验结果演示</h2>
                 <div class="media-container">
+                        <!-- 外层保持原有的 16:9 响应式容器，增加了黑色背景防止加载时白屏 -->
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background-color: #000;">
+                            <video
+                                controls
+                                playsinline
+                                preload="metadata"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            >
+                                <!-- 👇 请在下方引号内填入你的腾讯云 COS 视频链接 👇 -->
+                                <source src="https://multimedia-1393180726.cos.ap-shanghai.myqcloud.com/video/%E5%AE%9E%E9%AA%8C%E6%BC%94%E7%A4%BA.mp4" type="video/mp4">
 
-                    <!-- 新增一个 wrapper 包裹层 -->
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
-                        <iframe
-                            src="https://player.bilibili.com/player.html?bvid=BV1AFq2B8Ei9&page=1&high_quality=1&danmaku=0"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                            scrolling="no"
-                            border="0"
-                            frameborder="no"
-                            framespacing="0"
-                            allowfullscreen="true">
-                        </iframe>
+                                您的浏览器不支持 HTML5 视频标签。
+                            </video>
+                        </div>
                     </div>
-                </div>
                 <div style="text-align: center; margin-top: 40px;">
                     <a href="experiment1.html" class="btn btn-outline">返回课程1</a>
                     <a href="experiment3.html" class="btn" style="margin-left: 15px;">进入课程3</a>

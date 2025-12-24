@@ -8,6 +8,15 @@
     <link rel="icon" href="media/images/校徽.png">
 </head>
 <body>
+
+    <div class="meteor-shower">
+        <!-- 这里只放流星的 i 标签 -->
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i>
+    </div>
     <!-- 导航栏 -->
     <nav class="nav-bar airglass">
         <div class="nav-content container">
@@ -37,19 +46,23 @@
             <!-- 多媒体演示卡片 -->
             <div class="card">
                 <h2 class="section-title">平台宣传片</h2>
-                <div class="media-container">
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
-                        <iframe
-                            src="https://player.bilibili.com/player.html?bvid=BV16QqUBaEpC&page=1&high_quality=1&danmaku=0"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                            scrolling="no"
-                            border="0"
-                            frameborder="no"
-                            framespacing="0"
-                            allowfullscreen="true">
-                        </iframe>
+                    <div class="media-container">
+                        <!-- 外层保持原有的 16:9 响应式容器，增加了黑色背景防止加载时白屏 -->
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background-color: #000;">
+                            <video
+                                controls
+                                playsinline
+                                preload="metadata"
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                poster="media/images/index.png"
+                            >
+                                <!-- 👇 请在下方引号内填入你的腾讯云 COS 视频链接 👇 -->
+                                <source src="https://multimedia-1393180726.cos.ap-shanghai.myqcloud.com/video/promotion.mp4" type="video/mp4">
+
+                                您的浏览器不支持 HTML5 视频标签。
+                            </video>
+                        </div>
                     </div>
-                </div>
             </div>
             <!-- 平台简介卡片 -->
             <div class="card">

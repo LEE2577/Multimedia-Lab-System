@@ -96,6 +96,9 @@ pip install -r requirements.txt
                 <div class="code-block">
 python main.py --mode build --file kb.txt
                 </div>
+                <div class="media-container">
+                    <img src="media/images/rag1.png" alt="rag1" width="800">
+                </div>
                 <p class="text-content">
                     从构建过程可以看出，程序首先成功加载了 kb.txt 并识别为 1 个原始文档，随后在 build_vector_store() 中对文档进行了分割、向量化与索引构建。完成向量化后，FAISS 索引被持久化保存至./vectorstore。整个过程包括文档加载正常、索引构建流程顺利完成、向量存储已被更新并可用于后续查询。
                 </p>
@@ -105,11 +108,13 @@ python main.py --mode build --file kb.txt
                 <div class="code-block">
 python main.py --mode interactive
                 </div>
-
                 <h3 class="sub-title">5. 单次查询</h3>
                 <p class="text-content">也可以使用单次查询模式：</p>
                 <div class="code-block">
 python main.py --mode query --question "希冀平台是什么？"
+                </div>
+                <div class="media-container">
+                    <img src="media/images/rag2.png" alt="rag2" width="800">
                 </div>
                 <p class="text-content">
                     结果应能看到对于希冀平台的介绍精确且完整，充分体现了RAG在有对应文本内容时，回答问题的准确性、全面性显著提升。
@@ -117,10 +122,18 @@ python main.py --mode query --question "希冀平台是什么？"
                 <p class="text-content">
                     接下来可以自己尝试提出相关性强/弱的问题，看看RAG系统的回答，并思考为什么回答结果的准确性会偏差很大。
                 </p>
-
+                <div class="media-container">
+                    <img src="media/images/rag3.png" alt="rag3" width="800">
+                </div>
+                <p class="text-content">
+                    第二个问题中提出了模糊的cg名称，源文本中并没有cg相关的字词，可见没有和模型中文本向量相似度高的内容。所以，RAG在源文本这没有给出的明确内容是无法进行回答的。
+                </p>
                 <h3 class="sub-title">6. 使用自定义文档</h3>
                 <p class="text-content"></p>
                 <p class="text-content">使用自己的文档构建知识库，将txt/pdf/文件加载进模型，使用增量添加，生成向量存储并保存。</p>
+                <div class="media-container">
+                    <img src="media/images/rag4.png" alt="rag4" width="800">
+                </div>
                 <p class="text-content">根据pdf中的内容整合出来了适合问题的信息，内容完善且准确。</p>
 
 
